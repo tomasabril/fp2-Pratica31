@@ -15,27 +15,41 @@ public class Pratica31
 {
     public static void main(String[] args)
     {
-    String nome = "Tomás Abril";
+    String nome = "João da Silva Bogado Júnior";
     String nomeM = nome.toUpperCase();
     String nomea = "";
+    String nomep = "";
+    int i;
     Date agora = new Date();
     Calendar calendar = new GregorianCalendar(1993, 02, 02);
     long dif;
-    dif = calendar.getTimeInMillis - agora.getTimeInMillis;
+    //dif = calendar.getTimeInMillis() - agora.getTimeInMillis();
    
-        System.out.println(nomeM);
-    for(int i=0; i<=nome.length(); i++)
+    System.out.println(nomeM);
+       
+    for(i=nome.length()-1; i>=0; i--)
     {
         if(isWhitespace(nome.charAt(i)))
-        {
-            nomea = nomea + ", " + nome.charAt(i+1) + ".";
-            break;
-        }
+        { 
+		nomep = new StringBuilder(nomea).reverse().toString();
+		nomep += ", ";
+		break;
+	}
         else
         {
             nomea = nomea + nome.charAt(i);
         }
     }
-    System.out.println(nomea);
+    nomep += nome.charAt(0) + ". ";
+    for(int j=0; j<i; j++)
+    {
+	if(isWhitespace(nome.charAt(j)))
+	{
+		nomep += nome.charAt(j+1) + ". ";	
+	}
+    }
+    String abreviado = nomep.trim();
+    
+    System.out.println(abreviado);
     }
 }
